@@ -1,0 +1,45 @@
+{
+  "name": "lerna",
+  "version": "0.1.1",
+  "main": "index.js",
+  "repository": "https://github.com/goblin-laboratory/cra-lerna-template.git",
+  "author": "xiaosong <kunkkaco@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js packages",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "cov": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna run start",
+    "build": "lerna run build",
+    "deploy": "lerna run deploy",
+    "changelog": "lerna version --conventional-commits"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^3.0.2",
+    "lerna": "^3.16.4",
+    "prettier": "^1.18.2",
+    "react-scripts": "^3.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
+    }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
